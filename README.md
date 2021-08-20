@@ -75,6 +75,7 @@ f
 <p align="center">
   <img src="assets/example3fig.png" width="600">
 </p>
+
 ```julia
 f = Figure();
 ax = Axis(f[1, 1]);
