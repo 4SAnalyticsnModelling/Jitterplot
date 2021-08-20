@@ -5,6 +5,16 @@ These functions help drawing jitter plots in Makie.jl plotting system
 using Pkg;
 Pkg.add("https://github.com/4SAnalyticsnModelling/Jitterplot.git");
 ```
+# Functions
+```
+jitterplot(x, y, width_jit; kwargs)
+# width_jit (fraction between 0 and 1) determines the spread of scatter points
+# kwargs are the keyword arguments same as Makie.jl scatter function
+
+jitterplot!(x, y, width_jit; kwargs)
+# for paired (dodged) jitter plots kwargs arguments must include 'dodge_group' (a vector or an array of integers or floating point numbers). 'dodge_color' keywords provide a list of user defined colors for each each of the jitters in a pair. when 'dodge_color' is provided the 'color' keyword must be excluded. the argument 'gap_jit' (fraction between 0 and 1) affects the gap between paired jitters.
+     
+```
 # Examples
 ```julia
 using Jitterplot;
