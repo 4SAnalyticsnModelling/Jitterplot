@@ -1,30 +1,37 @@
 # Jitterplot
 These functions help drawing jitter plots in Makie.jl plotting system
-# Use the functions as follows
+# Install the codes as follows
 ```julia
 using Pkg;
 Pkg.add("https://github.com/4SAnalyticsnModelling/Jitterplot.git");
 ```
 # Functions
 ```
-jitterplot(x, y, width_jit; kwargs)
+jitterplot(x, y, width_jit; kwargs...);
 
-# width_jit (fraction between 0 and 1) determines the spread of scatter points
-# kwargs are the keyword arguments same as Makie.jl scatter function
-# cannot be used to plot paired (dodged) jitter plots
-
-
-jitterplot!(x, y, width_jit; kwargs)
-
-# for paired (dodged) jitter plots kwargs arguments must include 'dodge_group'
-(a vector or an array of integers or floating point numbers)
-# 'dodge_color' keyword provides a list of user defined colors for each each of the jitters
-in a pair
-# when 'dodge_color' is provided the 'color' keyword argument must not be included to avoid conflict
-# the argument 'gap_jit' (fraction between 0 and 1; default value is 1.0 if not provided) controls the gap
-between paired jitters
+jitterplot!(x, y, width_jit; kwargs...);
 
 ```
+# Attributes
+
+```
+width_jit:                   fraction between 0 and 1; determines the spread of scatter points
+kwargs:                      keyword arguments similar to the attributes of scatter function in Makie.jl
+dodge_group:                 a keyword argument that defines the groups in a paired (dodged) jitter plot; a
+                             vector or an array of integers or floating point numbers; for paired (dodged)
+                             jitter plots 'dodge_group' arguments must be provided
+dodge_color:                 a keyword argument that controls color of each jitter in a paired (dodged)
+                             jitter plot; a list of user defined colors for each each of the dodged jitters
+                             in pairs; 'dodge_color' and 'color' keyword arguments must not be used together
+                             to avoid conflict
+dodge_gap:                   a keyword argument that controls the gap between paired (dodged) jitters; a  
+                             fraction between 0 and 1; default value is 1.0 if not provided
+direction:                   a keyword argument that controls the direction of jitter plot; :horizontal is
+                             parallel to x-axis and :vertical is parallel to y-axis; default value is
+                             :vertical
+
+```
+
 # Examples
 ```julia
 using Jitterplot;
@@ -33,7 +40,7 @@ using CairoMakie;
 x = repeat(1:3, inner = 100);
 y = repeat(rand(100), outer = 3);
 
-jitterplot(x, y, 0.2)
+Jitterplot.jitterplot(x, y, 0.2)
 ```
 <p align="center">
   <img src="assets/example1fig.png" width="600">
@@ -42,7 +49,7 @@ jitterplot(x, y, 0.2)
 ```julia
 f = Figure();
 ax = Axis(f[1, 1]);
-jitterplot!(x, y, 0.2,
+Jitterplot.jitterplot!(x, y, 0.2,
                       color = :green,
                       markersize = 12,
                       strokewidth = 1.0);
@@ -53,11 +60,11 @@ f
 </p>
 
 ```julia
-dodge_group = repeat(1:2, outer =150);
+dodge_group = repeat(1:2, outer = 150);
 dodge_color = [:blue, :green];
 f = Figure();
 ax = Axis(f[1, 1]);
-jitterplot!(x, y, 0.1,
+Jitterplot.jitterplot!(x, y, 0.1,
                       gap_jit = 0.3,
                       dodge_group = dodge_group,
                       dodge_color = dodge_color,
@@ -67,4 +74,19 @@ f
 ```
 <p align="center">
   <img src="assets/example3fig.png" width="600">
+</p>
+```julia
+f = Figure();
+ax = Axis(f[1, 1]);
+Jitterplot.jitterplot!(x, y, 0.1,
+                      gap_jit = 0.3,
+                      dodge_group = dodge_group,
+                      dodge_color = dodge_color,
+                      markersize = 12,
+                      strokewidth = 1.0,
+                      direction = :horizontal);
+f
+```
+<p align="center">
+  <img src="assets/example4fig.png" width="600">
 </p>
