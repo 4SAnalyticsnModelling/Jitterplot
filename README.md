@@ -4,4 +4,4 @@ These functions help drawing jitter plots in Makie.jl plotting system
 julia```
 using Pkg;
 Pkg.add("https://github.com/4SAnalyticsnModelling/jitterplot.git");
-using Jitterplot;
+using Jitterplot;```
