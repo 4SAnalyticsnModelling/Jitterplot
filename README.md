@@ -11,6 +11,7 @@ jitterplot(x, y, width_jit; kwargs)
 
 # width_jit (fraction between 0 and 1) determines the spread of scatter points
 # kwargs are the keyword arguments same as Makie.jl scatter function
+# cannot be used to plot paired (dodged) jitter plots
 
 
 jitterplot!(x, y, width_jit; kwargs)
@@ -20,7 +21,8 @@ jitterplot!(x, y, width_jit; kwargs)
 # 'dodge_color' keyword provides a list of user defined colors for each each of the jitters
 in a pair
 # when 'dodge_color' is provided the 'color' keyword argument must not be included to avoid conflict
-# the argument 'gap_jit' (fraction between 0 and 1; default value is 1.0 if not provided) controls the gap between paired jitters
+# the argument 'gap_jit' (fraction between 0 and 1; default value is 1.0 if not provided) controls the gap
+between paired jitters
 
 ```
 # Examples
@@ -40,7 +42,10 @@ jitterplot(x, y, 0.2)
 ```julia
 f = Figure();
 ax = Axis(f[1, 1]);
-jitterplot!(x, y, 0.2, color = :blue, markersize = 12, strokecolor = :black);
+jitterplot!(x, y, 0.2,
+                      color = :green,
+                      markersize = 12,
+                      strokewidth = 1.0);
 f
 ```
 <p align="center">
@@ -52,7 +57,12 @@ dodge_group = repeat(1:2, outer =150);
 dodge_color = [:blue, :green];
 f = Figure();
 ax = Axis(f[1, 1]);
-jitterplot!(x, y, 0.1, gap_jit = 0.3, dodge_group = dodge_group, dodge_color = dodge_color, markersize = 12);
+jitterplot!(x, y, 0.1,
+                      gap_jit = 0.3,
+                      dodge_group = dodge_group,
+                      dodge_color = dodge_color,
+                      markersize = 12,
+                      strokewidth = 1.0);
 f
 ```
 <p align="center">

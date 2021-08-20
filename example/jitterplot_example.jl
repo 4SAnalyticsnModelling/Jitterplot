@@ -16,7 +16,7 @@ y = repeat(rand(100), outer = 3);
 
 f = Makie.Figure();
 ax = Makie.Axis(f[1, 1]);
-Jitterplot.jitterplot!(x, y, 0.2, color = :blue, markersize = 12, strokecolor = :black);
+jitterplot!(x, y, 0.2, color = :green, markersize = 12, strokewidth = 1.0);
 f
 
 Makie.save("../assets/example2fig.png", f);
@@ -29,6 +29,6 @@ dodge_color = [:blue, :green];
 
 f = Makie.Figure();
 ax = Makie.Axis(f[1, 1]);
-jitterplot!(x, y, 0.1, gap_jit = 0.3, dodge_group = dodge_group, dodge_color = dodge_color, markersize = 12);
+jitterplot!(x, y, 0.1, gap_jit = 0.3, dodge_group = dodge_group, dodge_color = dodge_color, markersize = 12, strokewidth = 1.0);
 f
 Makie.save("../assets/example3fig.png", f);
