@@ -20,21 +20,21 @@ jitterplot(x, y, 0.2)
 </p>
 
 ```julia
-f = Makie.Figure();
-ax = Makie.Axis(f[1, 1]);
-Jitterplot.jitterplot!(x, y, 0.2, color = :blue, markersize = 12, strokecolor = :black);
+f = Figure();
+ax = Axis(f[1, 1]);
+jitterplot!(x, y, 0.2, color = :blue, markersize = 12, strokecolor = :black);
 f
 ```
 <p align="center">
   <img src="assets/example2fig.png" width="600">
 </p>
+
 ```julia
 dodge_group = repeat(1:2, outer =150);
 dodge_color = [:blue, :green];
-
-f = Makie.Figure();
-ax = Makie.Axis(f[1, 1]);
-Jitterplot.jitterplot!(x, y, 0.2, dodge_group = dodge_group, dodge_color = dodge_color, markersize = 12);
+f = Figure();
+ax = Axis(f[1, 1]);
+jitterplot!(x, y, 0.2, dodge_group = dodge_group, dodge_color = dodge_color, markersize = 12);
 f
 ```
 <p align="center">
