@@ -23,7 +23,8 @@ dodge_group:                 a keyword argument that defines the groups in a pai
 dodge_color:                 a keyword argument that controls color of each jitter in a paired (dodged)
                              jitter plot; a list of symbols defining color of each dodged jitter
                              in a pair; 'dodge_color' and 'color' keyword arguments must not be used together
-                             to avoid conflict
+                             since the 'color' keyword argument overwrites the 'dodge_color' argument and
+                             produces unwanted outputs
 dodge_gap:                   a keyword argument that controls the gap between paired (dodged) jitters; a  
                              fraction between 0 and 1; default value is 1.0
 direction:                   a keyword argument that controls the direction of jitter plot; :horizontal is
