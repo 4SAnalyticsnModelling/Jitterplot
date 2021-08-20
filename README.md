@@ -15,3 +15,6 @@ y = repeat(rand(100), outer = 3);
 
 jitterplot(x, y, 0.2)
 ```
+<p align="center">
+  <img src="assets/example1fig.png" width="350">
+</p>
