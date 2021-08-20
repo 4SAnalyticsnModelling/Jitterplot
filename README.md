@@ -65,7 +65,7 @@ dodge_color = [:blue, :green];
 f = Figure();
 ax = Axis(f[1, 1]);
 Jitterplot.jitterplot!(x, y, 0.1,
-                      gap_jit = 0.3,
+                      dodge_gap = 0.3,
                       dodge_group = dodge_group,
                       dodge_color = dodge_color,
                       markersize = 12,
@@ -80,7 +80,7 @@ f
 f = Figure();
 ax = Axis(f[1, 1]);
 Jitterplot.jitterplot!(x, y, 0.1,
-                      gap_jit = 0.3,
+                      dodge_gap = 0.3,
                       dodge_group = dodge_group,
                       dodge_color = dodge_color,
                       markersize = 12,
