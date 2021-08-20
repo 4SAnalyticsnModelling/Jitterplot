@@ -1,5 +1,5 @@
 # Jitterplot
-These functions help drawing jitter plots in Makie.jl plotting system
+This module contains function that helps drawing jitter plots in Makie.jl plotting system
 # Install
 ```julia
 using Pkg;
