@@ -34,7 +34,7 @@ dodge_group = repeat(1:2, outer =150);
 dodge_color = [:blue, :green];
 f = Figure();
 ax = Axis(f[1, 1]);
-jitterplot!(x, y, 0.2, dodge_group = dodge_group, dodge_color = dodge_color, markersize = 12);
+jitterplot!(x, y, 0.1, gap_jit = 0.3, dodge_group = dodge_group, dodge_color = dodge_color, markersize = 12);
 f
 ```
 <p align="center">
